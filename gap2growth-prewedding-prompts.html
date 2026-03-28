@@ -8,61 +8,46 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#F5F4FF;
-  --surface:#FFFFFF;
-  --surface2:#EEEEFF;
-  --border:#DDD9FF;
-  --accent:#5B3FE8;
-  --accent2:#FF6B35;
-  --accent3:#00C9A7;
-  --text:#0D0B1E;
-  --text-muted:#5D5A7A;
-  --text-dim:#A09EC0;
-  --grad-start:#5B3FE8;
-  --grad-end:#FF6B35;
+  --bg:#ececec;
+  --surface:#ffffff;
+  --surface2:#f8f8f8;
+  --border:#c8d9e4;
+  --accent:#0e133f;
+  --accent2:#00fd7b;
+  --accent3:#0e133f;
+  --text:#0e133f;
+  --text-muted:#3b3d5b;
+  --text-dim:#6a6b88;
+  --grad-start:#0e133f;
+  --grad-end:#00fd7b;
   --font-display:'Fraunces',serif;
   --font-body:'Plus Jakarta Sans',sans-serif;
   --radius:6px;--radius-lg:12px;--radius-xl:20px;
 }
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh}
+.icon-badge{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:var(--surface2);color:var(--accent);font-size:12px;font-weight:700;font-family:var(--font-body);}
 
 /* HEADER */
 .header{
   position:relative;
   padding:0 32px 0;
   overflow:hidden;
-  background:linear-gradient(135deg,#0D0B1E 0%,#1A1060 45%,#2B1B8C 100%);
+  background:var(--surface);
 }
-.header-glow{
-  position:absolute;top:-80px;left:50%;transform:translateX(-50%);
-  width:600px;height:400px;
-  background:radial-gradient(ellipse,rgba(91,63,232,.45) 0%,transparent 70%);
-  pointer-events:none;
-}
-.header-glow2{
-  position:absolute;bottom:-60px;right:-80px;
-  width:400px;height:300px;
-  background:radial-gradient(ellipse,rgba(255,107,53,.3) 0%,transparent 70%);
-  pointer-events:none;
-}
-.header-dots{
-  position:absolute;inset:0;
-  background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);
-  background-size:28px 28px;
-  pointer-events:none;
-}
+.header-glow,.header-glow2,.header-dots{display:none;}
+
 .header-topbar{
   display:flex;align-items:center;justify-content:space-between;
   padding:18px 0 20px;
-  border-bottom:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid var(--border);
 }
 .logo-wrap{display:flex;align-items:center;gap:12px}
-.logo-img{height:36px;object-fit:contain;filter:brightness(0) invert(1)}
+.logo-img{height:36px;object-fit:contain;filter:none}
 .header-nav-link{
   font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
-  color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;
+  color:var(--text);text-decoration:none;transition:color .2s;
 }
-.header-nav-link:hover{color:#fff}
+.header-nav-link:hover{color:var(--accent)}
 .header-content{padding:52px 0 56px;text-align:center;position:relative;z-index:1}
 .header-label{
   display:inline-flex;align-items:center;gap:8px;
@@ -75,31 +60,30 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-hei
   font-family:var(--font-display);
   font-size:clamp(32px,6vw,60px);
   font-weight:300;line-height:1.1;
-  color:#fff;
+  color:var(--text);
   letter-spacing:-.5px;
   margin-bottom:18px;
 }
 .header-title em{
   font-style:italic;
-  background:linear-gradient(90deg,var(--accent2),#FFB347);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  color:var(--accent2);
 }
 .header-subtitle{
-  font-size:14px;color:rgba(255,255,255,.55);font-weight:400;
+  font-size:14px;color:var(--text-muted);font-weight:400;
   max-width:500px;margin:0 auto 28px;line-height:1.7;
 }
 .header-meta{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
 .header-count{
-  font-size:12px;color:rgba(255,255,255,.4);
+  font-size:12px;color:var(--text-muted);
   font-family:var(--font-display);font-style:italic;
 }
 .header-badge{
   font-size:10px;letter-spacing:2px;text-transform:uppercase;
-  border:1px solid rgba(91,63,232,.5);padding:4px 12px;border-radius:20px;
-  font-weight:600;background:rgba(91,63,232,.2);color:rgba(255,255,255,.7);
+  border:1px solid var(--border);padding:4px 12px;border-radius:20px;
+  font-weight:600;background:var(--surface2);color:var(--text);
 }
 .header-badge-orange{
-  border-color:rgba(255,107,53,.5);background:rgba(255,107,53,.15);color:rgba(255,200,150,.85);
+  border-color:var(--accent2);background:rgba(0,253,123,.12);color:var(--accent);
 }
 
 /* CONTROLS */
@@ -155,13 +139,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-hei
   transform:translateY(-3px);
   box-shadow:0 8px 32px rgba(91,63,232,.12);
 }
-.card-accent-bar{height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity .2s}
+.card-accent-bar{height:3px;background:var(--accent);opacity:0;transition:opacity .2s}
 .card:hover .card-accent-bar{opacity:1}
 .card-header{padding:18px 20px 0;display:flex;align-items:flex-start;gap:14px}
 .card-emoji{
   font-size:26px;flex-shrink:0;margin-top:2px;
   width:44px;height:44px;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,rgba(91,63,232,.08),rgba(255,107,53,.08));
+  background:rgba(229,236,244,0.6);
   border-radius:10px;
 }
 .card-meta{flex:1;min-width:0}
@@ -186,7 +170,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-hei
 .prompt-text.expanded{max-height:2000px}
 .prompt-text:not(.expanded)::after{
   content:'';position:absolute;bottom:0;left:0;right:0;height:28px;
-  background:linear-gradient(transparent,var(--surface));pointer-events:none;
+  background:var(--surface);pointer-events:none;
 }
 .negative-preview{padding:0 20px 14px}
 .negative-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:5px;font-weight:600}
@@ -198,11 +182,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-hei
   display:flex;align-items:center;gap:6px;white-space:nowrap;
 }
 .btn-primary{
-  background:linear-gradient(135deg,var(--accent),#7B62F0);color:#fff;flex:1;justify-content:center;
+  background:var(--accent);color:#fff;flex:1;justify-content:center;
   box-shadow:0 2px 10px rgba(91,63,232,.25);
 }
-.btn-primary:hover{background:linear-gradient(135deg,#4B2FD8,#6B52E0);box-shadow:0 4px 16px rgba(91,63,232,.35)}
-.btn-primary.copied{background:linear-gradient(135deg,#00C9A7,#00A88A)}
+.btn-primary:hover{background:var(--accent3);box-shadow:0 4px 16px rgba(91,63,232,.35)}
+.btn-primary.copied{background:var(--accent2)}
 .btn-ghost{
   background:transparent;border:1.5px solid var(--border);color:var(--text-muted);
   padding:9px 14px;
@@ -217,15 +201,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-hei
 /* FOOTER */
 .footer{
   border-top:1px solid var(--border);padding:28px 32px;
-  background:linear-gradient(135deg,#0D0B1E,#1A1060);
+  background:var(--surface);
 }
 .footer-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.footer-logo{height:28px;object-fit:contain;filter:brightness(0) invert(1);opacity:.7}
-.footer-text{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
+.footer-logo{height:28px;object-fit:contain;filter:none;opacity:1}
+.footer-text{font-size:11px;color:var(--text);letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
 .footer-text span{color:var(--accent2)}
-.footer-link{font-size:11px;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:1px;font-weight:500;transition:color .2s}
-.footer-link:hover{color:var(--accent2)}
-
+.footer-link{font-size:11px;color:var(--text);text-decoration:none;letter-spacing:1px;font-weight:500;transition:color .2s}
+.footer-link:hover{color:var(--accent)}
 @media(max-width:600px){
   .header,.controls,.results-bar{padding-left:16px;padding-right:16px}
   .grid{padding-left:16px;padding-right:16px;grid-template-columns:1fr}
@@ -243,10 +226,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-hei
   <div class="header-glow"></div>
   <div class="header-glow2"></div>
   <div class="header-topbar">
-    <a href="https://gap2growth.in" target="_blank" class="logo-wrap">
-      <img class="logo-img" src="https://gap2growth.in/wp-content/uploads/2025/12/cropped-Gap-2-Growth-scaled-1-300x98.png" alt="Gap2Growth Logo"/>
+    <a href="index.html" class="logo-wrap">
+      <img class="logo-img" src="logo.png" alt="Gap2Growth Logo"/>
     </a>
-    <a href="https://gap2growth.in" class="header-nav-link" target="_blank">gap2growth.in ↗</a>
+    <a href="index.html" class="header-nav-link">Home ↗</a>
+    <a href="gap2growth-prewedding-prompts.html" class="header-nav-link">Pre-Wedding Prompts</a>
   </div>
   <div class="header-content">
     <div class="header-label">
@@ -282,7 +266,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-hei
 
 <footer class="footer">
   <div class="footer-inner">
-    <img class="footer-logo" src="https://gap2growth.in/wp-content/uploads/2025/12/cropped-Gap-2-Growth-scaled-1-300x98.png" alt="Gap2Growth"/>
+    <img class="footer-logo" src="logo.png" alt="Gap2Growth"/>
     <p class="footer-text">Cinematic Pre-Wedding Prompts · <span>Gap2Growth</span> · Upload your selfie · Preserve your face · Create magic</p>
     <a href="https://gap2growth.in" target="_blank" class="footer-link">gap2growth.in ↗</a>
   </div>
@@ -291,8 +275,18 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-hei
 <script>
 const categories = ["All","Royal Heritage","Desert & Dunes","Mountains & Hills","Beaches & Islands","Waterways & Lakes","Nature & Fantasy","Lifestyle & Urban"];
 
+const categoryIcon = {
+  "Royal Heritage": "castle",
+  "Desert & Dunes": "landscape",
+  "Mountains & Hills": "terrain",
+  "Beaches & Islands": "beach_access",
+  "Waterways & Lakes": "waterscape",
+  "Nature & Fantasy": "park",
+  "Lifestyle & Urban": "apartment"
+};
+
 const prompts = [
-  {id:1,category:"Royal Heritage",location:"Taj Mahal, Agra",emoji:"🕌",time:"Sunrise",shortDesc:"From your uploaded selfie, without changing your faces, create a timeless couple portrait at the ivory Taj Mahal bathed in soft sunrise gold.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a soft ivory silk saree, her dark wavy hair adorned with small jasmine flowers. The man stands beside her in an off-white formal suit, gently holding her hand. They are positioned in front of the iconic Taj Mahal during sunrise, with the majestic white marble structure bathed in soft pink and golden light. The mood is regal, poetic, painterly, and timeless, evoking classic Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:1,category:"Royal Heritage",location:"Taj Mahal, Agra",time:"Sunrise",shortDesc:"From your uploaded selfie, without changing your faces, create a timeless couple portrait at the ivory Taj Mahal bathed in soft sunrise gold.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a soft ivory silk saree, her dark wavy hair adorned with small jasmine flowers. The man stands beside her in an off-white formal suit, gently holding her hand. They are positioned in front of the iconic Taj Mahal during sunrise, with the majestic white marble structure bathed in soft pink and golden light. The mood is regal, poetic, painterly, and timeless, evoking classic Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
   {id:2,category:"Royal Heritage",location:"Jaipur Amer Fort, Rajasthan",emoji:"🏯",time:"Late Afternoon",shortDesc:"From your uploaded selfie, without changing your faces, create a regal couple moment at the grand Amer Fort entrance bathed in warm Rajasthani gold.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a rich maroon silk saree, her hair styled in voluminous curls adorned with small pearls. The man stands beside her in a dark blue formal suit, gazing at her lovingly. They are positioned at the grand entrance of Jaipur's Amer Fort during late afternoon, with warm golden light casting soft shadows over the fort's intricate architecture. The mood is regal, painterly, cinematic, and timeless. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
   {id:3,category:"Royal Heritage",location:"Historic Fort",emoji:"🏰",time:"Twilight",shortDesc:"From your uploaded selfie, without changing your faces, create a royal couple silhouette glowing against ancient fort walls at magical twilight.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a deep red silk saree, her dark curls elegantly pinned with a small golden accessory. The man stands beside her in a black formal suit, gazing at her lovingly. They are positioned in the courtyard of an ancient fort during twilight, with soft ambient light illuminating the historic stone walls. The atmosphere is regal, painterly, cinematic, and timeless, echoing vintage Bollywood elegance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, high resolution, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
   {id:4,category:"Royal Heritage",location:"Varanasi Ghats, Uttar Pradesh",emoji:"🪔",time:"Dawn",shortDesc:"From your uploaded selfie, without changing your faces, create a spiritual couple portrait at the sacred Varanasi Ghats glowing in soft dawn light.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a bright orange silk saree, her hair styled in soft waves with a small marigold pinned in. The man stands beside her in an off-white linen suit, gently holding her hand. They are positioned on the steps of Varanasi Ghats at dawn, with the soft morning light and the Ganges river flowing peacefully in the background. The mood is spiritual, timeless, painterly, and poetic. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
@@ -396,12 +390,13 @@ function render() {
   }
   list.forEach(p => {
     const isExp = expandedId === p.id;
+    const iconName = categoryIcon[p.category] || "place";
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
       <div class="card-accent-bar"></div>
       <div class="card-header">
-        <div class="card-emoji">${p.emoji}</div>
+        <div class="card-emoji"><span class="material-symbols-outlined">${iconName}</span></div>
         <div class="card-meta">
           <div class="card-cat"><span class="card-cat-dot"></span>${p.category}</div>
           <div class="card-title">${p.location}</div>
@@ -429,6 +424,35 @@ function render() {
 }
 
 render();
+</script>
+<script>
+  const iconMap = {
+    camera_alt: 'CAM',
+    chatbot: 'GPT',
+    extension: 'EXT',
+    brush: 'BRU',
+    menu_book: 'BOOK',
+    edit: 'EDIT',
+    school: 'SCH',
+    smart_toy: 'AI',
+    design_services: 'DES',
+    bolt: 'BOL',
+    phone: 'CALL',
+    psychology: 'PSY',
+    palette: 'PAL',
+    work: 'WRK',
+    favorite: '♥',
+    smartphone: 'PHN',
+    apartment: 'APT'
+  };
+  document.querySelectorAll('.material-symbols-outlined').forEach((el) => {
+    const key = el.textContent.trim();
+    const fallback = iconMap[key] || key;
+    const span = document.createElement('span');
+    span.className = 'icon-badge';
+    span.textContent = fallback;
+    el.parentNode.replaceChild(span, el);
+  });
 </script>
 </body>
 </html>
