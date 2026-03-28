@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cinematic Pre-Wedding Prompts — Gap2Growth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5F4FF;
+  --surface:#FFFFFF;
+  --surface2:#EEEEFF;
+  --border:#DDD9FF;
+  --accent:#5B3FE8;
+  --accent2:#FF6B35;
+  --accent3:#00C9A7;
+  --text:#0D0B1E;
+  --text-muted:#5D5A7A;
+  --text-dim:#A09EC0;
+  --grad-start:#5B3FE8;
+  --grad-end:#FF6B35;
+  --font-display:'Fraunces',serif;
+  --font-body:'Plus Jakarta Sans',sans-serif;
+  --radius:6px;--radius-lg:12px;--radius-xl:20px;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh}
+
+/* HEADER */
+.header{
+  position:relative;
+  padding:0 32px 0;
+  overflow:hidden;
+  background:linear-gradient(135deg,#0D0B1E 0%,#1A1060 45%,#2B1B8C 100%);
+}
+.header-glow{
+  position:absolute;top:-80px;left:50%;transform:translateX(-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(91,63,232,.45) 0%,transparent 70%);
+  pointer-events:none;
+}
+.header-glow2{
+  position:absolute;bottom:-60px;right:-80px;
+  width:400px;height:300px;
+  background:radial-gradient(ellipse,rgba(255,107,53,.3) 0%,transparent 70%);
+  pointer-events:none;
+}
+.header-dots{
+  position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:28px 28px;
+  pointer-events:none;
+}
+.header-topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 0 20px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.logo-wrap{display:flex;align-items:center;gap:12px}
+.logo-img{height:36px;object-fit:contain;filter:brightness(0) invert(1)}
+.header-nav-link{
+  font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;
+}
+.header-nav-link:hover{color:#fff}
+.header-content{padding:52px 0 56px;text-align:center;position:relative;z-index:1}
+.header-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+  color:var(--accent3);margin-bottom:20px;
+}
+.header-label-dot{width:6px;height:6px;border-radius:50%;background:var(--accent3);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.header-title{
+  font-family:var(--font-display);
+  font-size:clamp(32px,6vw,60px);
+  font-weight:300;line-height:1.1;
+  color:#fff;
+  letter-spacing:-.5px;
+  margin-bottom:18px;
+}
+.header-title em{
+  font-style:italic;
+  background:linear-gradient(90deg,var(--accent2),#FFB347);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.header-subtitle{
+  font-size:14px;color:rgba(255,255,255,.55);font-weight:400;
+  max-width:500px;margin:0 auto 28px;line-height:1.7;
+}
+.header-meta{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.header-count{
+  font-size:12px;color:rgba(255,255,255,.4);
+  font-family:var(--font-display);font-style:italic;
+}
+.header-badge{
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  border:1px solid rgba(91,63,232,.5);padding:4px 12px;border-radius:20px;
+  font-weight:600;background:rgba(91,63,232,.2);color:rgba(255,255,255,.7);
+}
+.header-badge-orange{
+  border-color:rgba(255,107,53,.5);background:rgba(255,107,53,.15);color:rgba(255,200,150,.85);
+}
+
+/* CONTROLS */
+.controls{
+  padding:20px 32px;
+  border-bottom:1px solid var(--border);
+  background:var(--surface);
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 16px rgba(91,63,232,.06);
+}
+.controls-inner{max-width:1140px;margin:0 auto;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.search-wrap{position:relative;flex:1;min-width:200px;max-width:320px}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:16px;pointer-events:none}
+.search-input{
+  width:100%;background:var(--surface2);border:1.5px solid var(--border);
+  color:var(--text);font-family:var(--font-body);font-size:13px;
+  padding:9px 12px 9px 36px;border-radius:var(--radius);outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.search-input::placeholder{color:var(--text-dim)}
+.search-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(91,63,232,.12)}
+.select-wrap{position:relative}
+.cat-select{
+  appearance:none;background:var(--surface2);border:1.5px solid var(--border);
+  color:var(--text);font-family:var(--font-body);font-size:13px;
+  padding:9px 36px 9px 14px;border-radius:var(--radius);outline:none;cursor:pointer;min-width:190px;
+}
+.cat-select:focus{border-color:var(--accent)}
+.select-arrow{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--text-dim);pointer-events:none;font-size:10px}
+.cat-pills{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.cat-pill{
+  font-size:11px;letter-spacing:.5px;padding:5px 14px;border-radius:20px;
+  border:1.5px solid var(--border);background:transparent;color:var(--text-muted);
+  cursor:pointer;transition:all .2s;font-family:var(--font-body);font-weight:500;white-space:nowrap;
+}
+.cat-pill:hover{border-color:var(--accent);color:var(--accent);background:rgba(91,63,232,.06)}
+.cat-pill.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 2px 8px rgba(91,63,232,.3)}
+
+/* RESULTS BAR */
+.results-bar{padding:12px 32px;font-size:11px;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;font-weight:600}
+.results-bar-inner{max-width:1140px;margin:0 auto}
+
+/* GRID */
+.grid{padding:0 32px 72px;max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
+
+/* CARD */
+.card{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--radius-xl);overflow:hidden;
+  transition:border-color .2s,transform .25s,box-shadow .25s;
+}
+.card:hover{
+  border-color:var(--accent);
+  transform:translateY(-3px);
+  box-shadow:0 8px 32px rgba(91,63,232,.12);
+}
+.card-accent-bar{height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity .2s}
+.card:hover .card-accent-bar{opacity:1}
+.card-header{padding:18px 20px 0;display:flex;align-items:flex-start;gap:14px}
+.card-emoji{
+  font-size:26px;flex-shrink:0;margin-top:2px;
+  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(91,63,232,.08),rgba(255,107,53,.08));
+  border-radius:10px;
+}
+.card-meta{flex:1;min-width:0}
+.card-cat{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:600;
+  margin-bottom:5px;color:var(--accent);
+}
+.card-cat-dot{width:5px;height:5px;border-radius:50%;background:var(--accent2);flex-shrink:0}
+.card-title{font-family:var(--font-display);font-size:17px;font-weight:400;line-height:1.2;margin-bottom:3px;color:var(--text)}
+.card-time{font-size:11px;color:var(--text-dim);font-weight:500}
+.card-desc{
+  padding:12px 20px;font-size:12.5px;color:var(--text-muted);
+  line-height:1.65;font-style:italic;font-family:var(--font-display);font-weight:300;
+}
+.card-divider{height:1px;background:var(--border);margin:0 20px}
+.card-prompt-preview{padding:12px 20px}
+.prompt-text{
+  font-size:11px;color:var(--text-dim);line-height:1.6;font-family:var(--font-body);
+  max-height:60px;overflow:hidden;position:relative;transition:max-height .4s;
+}
+.prompt-text.expanded{max-height:2000px}
+.prompt-text:not(.expanded)::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:28px;
+  background:linear-gradient(transparent,var(--surface));pointer-events:none;
+}
+.negative-preview{padding:0 20px 14px}
+.negative-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:5px;font-weight:600}
+.negative-text{font-size:10.5px;color:#e55050;line-height:1.5;font-style:italic;opacity:.75}
+.card-actions{padding:14px 20px 18px;display:flex;gap:8px;align-items:center}
+.btn{
+  font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  padding:9px 18px;border-radius:8px;border:none;cursor:pointer;transition:all .18s;
+  display:flex;align-items:center;gap:6px;white-space:nowrap;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--accent),#7B62F0);color:#fff;flex:1;justify-content:center;
+  box-shadow:0 2px 10px rgba(91,63,232,.25);
+}
+.btn-primary:hover{background:linear-gradient(135deg,#4B2FD8,#6B52E0);box-shadow:0 4px 16px rgba(91,63,232,.35)}
+.btn-primary.copied{background:linear-gradient(135deg,#00C9A7,#00A88A)}
+.btn-ghost{
+  background:transparent;border:1.5px solid var(--border);color:var(--text-muted);
+  padding:9px 14px;
+}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:rgba(91,63,232,.05)}
+
+/* EMPTY */
+.empty{grid-column:1/-1;text-align:center;padding:80px 20px}
+.empty-emoji{font-size:48px;margin-bottom:16px}
+.empty-title{font-family:var(--font-display);font-size:22px;font-weight:300;color:var(--text-muted);font-style:italic}
+
+/* FOOTER */
+.footer{
+  border-top:1px solid var(--border);padding:28px 32px;
+  background:linear-gradient(135deg,#0D0B1E,#1A1060);
+}
+.footer-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-logo{height:28px;object-fit:contain;filter:brightness(0) invert(1);opacity:.7}
+.footer-text{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
+.footer-text span{color:var(--accent2)}
+.footer-link{font-size:11px;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:1px;font-weight:500;transition:color .2s}
+.footer-link:hover{color:var(--accent2)}
+
+@media(max-width:600px){
+  .header,.controls,.results-bar{padding-left:16px;padding-right:16px}
+  .grid{padding-left:16px;padding-right:16px;grid-template-columns:1fr}
+  .search-wrap{max-width:100%}
+  .cat-pills{display:none}
+  .header-topbar{flex-wrap:wrap;gap:10px}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-dots"></div>
+  <div class="header-glow"></div>
+  <div class="header-glow2"></div>
+  <div class="header-topbar">
+    <a href="https://gap2growth.in" target="_blank" class="logo-wrap">
+      <img class="logo-img" src="https://gap2growth.in/wp-content/uploads/2025/12/cropped-Gap-2-Growth-scaled-1-300x98.png" alt="Gap2Growth Logo"/>
+    </a>
+    <a href="https://gap2growth.in" class="header-nav-link" target="_blank">gap2growth.in ↗</a>
+  </div>
+  <div class="header-content">
+    <div class="header-label">
+      <span class="header-label-dot"></span>
+      AI Image Prompt Collection
+    </div>
+    <h1 class="header-title">Cinematic <em>Pre-Wedding</em><br>Prompts</h1>
+    <p class="header-subtitle">Upload your couple selfie — AI preserves your faces and places you in 30 breathtaking cinematic locations across India and beyond.</p>
+    <div class="header-meta">
+      <span class="header-count" id="totalCount">30 curated prompts</span>
+      <span class="header-badge">✦ AI-Powered</span>
+      <span class="header-badge header-badge-orange">By Gap2Growth</span>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input class="search-input" type="text" placeholder="Search location or category..." id="searchInput"/>
+    </div>
+    <div class="select-wrap">
+      <select class="cat-select" id="catSelect"></select>
+      <span class="select-arrow">▾</span>
+    </div>
+    <div class="cat-pills" id="catPills"></div>
+  </div>
+</div>
+
+<div class="results-bar"><div class="results-bar-inner" id="resultsBar"></div></div>
+<div class="grid" id="grid"></div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <img class="footer-logo" src="https://gap2growth.in/wp-content/uploads/2025/12/cropped-Gap-2-Growth-scaled-1-300x98.png" alt="Gap2Growth"/>
+    <p class="footer-text">Cinematic Pre-Wedding Prompts · <span>Gap2Growth</span> · Upload your selfie · Preserve your face · Create magic</p>
+    <a href="https://gap2growth.in" target="_blank" class="footer-link">gap2growth.in ↗</a>
+  </div>
+</footer>
+
+<script>
+const categories = ["All","Royal Heritage","Desert & Dunes","Mountains & Hills","Beaches & Islands","Waterways & Lakes","Nature & Fantasy","Lifestyle & Urban"];
+
+const prompts = [
+  {id:1,category:"Royal Heritage",location:"Taj Mahal, Agra",emoji:"🕌",time:"Sunrise",shortDesc:"From your uploaded selfie, without changing your faces, create a timeless couple portrait at the ivory Taj Mahal bathed in soft sunrise gold.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a soft ivory silk saree, her dark wavy hair adorned with small jasmine flowers. The man stands beside her in an off-white formal suit, gently holding her hand. They are positioned in front of the iconic Taj Mahal during sunrise, with the majestic white marble structure bathed in soft pink and golden light. The mood is regal, poetic, painterly, and timeless, evoking classic Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:2,category:"Royal Heritage",location:"Jaipur Amer Fort, Rajasthan",emoji:"🏯",time:"Late Afternoon",shortDesc:"From your uploaded selfie, without changing your faces, create a regal couple moment at the grand Amer Fort entrance bathed in warm Rajasthani gold.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a rich maroon silk saree, her hair styled in voluminous curls adorned with small pearls. The man stands beside her in a dark blue formal suit, gazing at her lovingly. They are positioned at the grand entrance of Jaipur's Amer Fort during late afternoon, with warm golden light casting soft shadows over the fort's intricate architecture. The mood is regal, painterly, cinematic, and timeless. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:3,category:"Royal Heritage",location:"Historic Fort",emoji:"🏰",time:"Twilight",shortDesc:"From your uploaded selfie, without changing your faces, create a royal couple silhouette glowing against ancient fort walls at magical twilight.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a deep red silk saree, her dark curls elegantly pinned with a small golden accessory. The man stands beside her in a black formal suit, gazing at her lovingly. They are positioned in the courtyard of an ancient fort during twilight, with soft ambient light illuminating the historic stone walls. The atmosphere is regal, painterly, cinematic, and timeless, echoing vintage Bollywood elegance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, high resolution, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:4,category:"Royal Heritage",location:"Varanasi Ghats, Uttar Pradesh",emoji:"🪔",time:"Dawn",shortDesc:"From your uploaded selfie, without changing your faces, create a spiritual couple portrait at the sacred Varanasi Ghats glowing in soft dawn light.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a bright orange silk saree, her hair styled in soft waves with a small marigold pinned in. The man stands beside her in an off-white linen suit, gently holding her hand. They are positioned on the steps of Varanasi Ghats at dawn, with the soft morning light and the Ganges river flowing peacefully in the background. The mood is spiritual, timeless, painterly, and poetic. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:5,category:"Royal Heritage",location:"Khajuraho Temples",emoji:"🛕",time:"Late Afternoon",shortDesc:"From your uploaded selfie, without changing your faces, create an ancient, cinematic couple portrait glowing before intricately carved Khajuraho temple walls.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears an elegant ivory silk saree, her dark curls adorned with small jasmine flowers. The man stands beside her in a dark grey formal suit, gently holding her hand. They are positioned in front of the historic Khajuraho Temples during late afternoon, with soft golden light illuminating intricate temple carvings in the background. The mood is ancient, regal, painterly, and timeless, evoking the grandeur of classic Bollywood cinema. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:6,category:"Desert & Dunes",location:"Jaisalmer Desert Dunes",emoji:"🏜️",time:"Golden Hour",shortDesc:"From your uploaded selfie, without changing your faces, create a cinematic couple standing atop golden Jaisalmer dunes as the desert sun melts into the horizon.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a bright yellow chiffon saree, her black wavy curls flowing freely with a small marigold pinned near her temple. The man stands beside her in a beige linen suit, gently holding her hand. They are positioned atop golden sand dunes in Jaisalmer during golden hour, with the sun setting and casting long, warm shadows over the desert landscape. The mood is ethereal, rustic, painterly, and timeless, inspired by classic 90s Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:7,category:"Desert & Dunes",location:"Rann of Kutch",emoji:"🌅",time:"Sunset",shortDesc:"From your uploaded selfie, without changing your faces, create a surreal couple portrait against the endless white salt flats of Rann of Kutch at sunset.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a bright orange chiffon saree, her hair styled in soft curls with small mirror embellishments. The man stands beside her in a beige formal suit, gently holding her hand. They are positioned in the white salt flats of Rann of Kutch during sunset, with the endless white landscape and soft pink sky creating a surreal atmosphere. The mood is ethereal, painterly, romantic, and timeless, inspired by classic Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:8,category:"Mountains & Hills",location:"Snowy Mountain Path",emoji:"🏔️",time:"Late Morning",shortDesc:"From your uploaded selfie, without changing your faces, create an ethereal couple portrait on a crisp snow-covered mountain path glowing in soft winter light.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears an off-white woolen saree, her hair styled in loose curls with a soft woolen cap. The man stands beside her in a dark blue wool suit, their hands intertwined. They are on a snow-covered mountain path during late morning, with soft sunlight reflecting off the snow, creating a crisp, serene atmosphere. The mood is ethereal, tranquil, painterly, and timeless, like a classic Bollywood film. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, high resolution, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:9,category:"Mountains & Hills",location:"McLeod Ganj, Himachal Pradesh",emoji:"🌲",time:"Early Morning",shortDesc:"From your uploaded selfie, without changing your faces, create a dreamy misty couple portrait surrounded by pine-scented clouds on a Himalayan hilltop.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a pastel purple chiffon saree, her dark curls adorned with small wildflowers. The man stands beside her in a light grey wool suit, softly holding her hand. They are positioned on a hilltop in McLeod Ganj during early morning, with mist rolling over pine trees and soft light diffusing through clouds. The mood is dreamy, tranquil, painterly, and timeless, like a classic 90s Bollywood film. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:10,category:"Mountains & Hills",location:"Shimla Ridge",emoji:"🌄",time:"Early Morning",shortDesc:"From your uploaded selfie, without changing your faces, create a soft, misty couple portrait on the iconic Shimla Ridge with pine forests melting into golden fog.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a soft pink woolen saree, her hair styled in gentle waves with a small jasmine flower tucked behind her ear. The man stands beside her in a dark grey formal wool suit, gently holding her hand. They are positioned on Shimla Ridge during early morning, with soft mist rolling over pine forests and sunlight filtering through clouds. The mood is dreamy, serene, painterly, and timeless, like a classic 90s Bollywood love story. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:11,category:"Mountains & Hills",location:"Chikmagalur Hills",emoji:"☕",time:"Early Morning",shortDesc:"From your uploaded selfie, without changing your faces, create a tranquil couple portrait wrapped in misty coffee plantation hills at the first light of dawn.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a pastel peach chiffon saree, her hair styled in soft waves with a small daisy pinned in. The man stands beside her in a light brown formal suit, softly holding her hand. They are positioned on a hill in Chikmagalur during early morning, surrounded by coffee plantations and misty hills under soft diffused sunlight. The mood is dreamy, painterly, tranquil, and timeless, inspired by classic Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:12,category:"Mountains & Hills",location:"Coorg Coffee Plantations",emoji:"🌿",time:"Early Morning",shortDesc:"From your uploaded selfie, without changing your faces, create a magical couple portrait nestled in Coorg's emerald coffee groves wrapped in morning mist.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a pastel green chiffon saree, her hair styled in loose curls with a small white flower pinned in. The man stands beside her in a beige linen suit, softly holding her hand. They are positioned amidst the lush green coffee plantations of Coorg during early morning, with soft mist and diffused sunlight creating a magical atmosphere. The mood is serene, dreamy, painterly, and timeless, evoking a gentle 90s Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:13,category:"Mountains & Hills",location:"Sikkim Gurudongmar Lake",emoji:"❄️",time:"Early Morning",shortDesc:"From your uploaded selfie, without changing your faces, create a breathtaking couple portrait by the sacred crystal Gurudongmar Lake with snow peaks as a backdrop.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a soft blue woolen saree, her dark hair styled in loose curls with a small flower tucked behind her ear. The man stands beside her in a grey wool suit, gently holding her hand. They are positioned near the pristine Gurudongmar Lake in Sikkim during early morning, with soft light reflecting off the crystal-clear lake and snow-capped mountains in the background. The mood is tranquil, painterly, serene, and timeless, like a vintage Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:14,category:"Mountains & Hills",location:"Ladakh Pangong Lake",emoji:"💙",time:"Early Morning",shortDesc:"From your uploaded selfie, without changing your faces, create a surreal couple portrait beside the vivid turquoise Pangong Lake with Ladakh's snow peaks watching over.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears an ivory woolen saree, her hair styled in soft curls with a small pearl accessory. The man stands beside her in a dark blue wool suit, softly holding her hand. They are positioned by the turquoise waters of Pangong Lake in Ladakh during early morning, with snow-capped mountains and soft sunlight creating a surreal, tranquil atmosphere. The mood is ethereal, painterly, serene, and timeless, like a classic Bollywood film. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:15,category:"Beaches & Islands",location:"Havelock Island, Andaman",emoji:"🏝️",time:"Sunset",shortDesc:"From your uploaded selfie, without changing your faces, create a dreamy couple portrait on Havelock's white sands as the sky erupts in orange and pink.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a pale blue chiffon saree, her hair flowing in soft curls with a small seashell accessory. The man stands beside her in a white formal suit, holding her hand. They are positioned on a white sandy beach at Havelock Island during sunset, with soft orange and pink hues reflected in the crystal-clear waters. The mood is serene, dreamy, painterly, and timeless, like a classic 90s Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:16,category:"Beaches & Islands",location:"Andaman Crystal Clear Beaches",emoji:"🌊",time:"Midday",shortDesc:"From your uploaded selfie, without changing your faces, create a vibrant couple portrait at Andaman's turquoise shores under tropical midday brilliance.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a pale turquoise chiffon saree, her hair styled in soft curls with a small seashell accessory. The man stands beside her in a white linen suit, gently holding her hand. They are positioned on a crystal-clear beach in Andaman during midday, with turquoise waters and white sands stretching into the horizon under bright sunlight. The mood is vibrant, cheerful, painterly, and timeless, evoking a gentle 90s Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:17,category:"Beaches & Islands",location:"Seaside Cliff",emoji:"🌅",time:"Dusk",shortDesc:"From your uploaded selfie, without changing your faces, create a poetic couple silhouette on a dramatic seaside cliff as ocean waves crash under a purple-orange dusk sky.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a soft coral pink chiffon saree, her hair in soft waves with a small white flower tucked behind her ear. The man stands beside her in a light grey formal suit, his hand on her shoulder. They are positioned on a seaside cliff during dusk, with the sky painted in purple and orange hues, and the ocean waves crashing below. The atmosphere is poetic, dreamy, painterly, and timeless, inspired by vintage Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, high resolution, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:18,category:"Waterways & Lakes",location:"Udaipur Lake Palace, Rajasthan",emoji:"🛶",time:"Golden Hour",shortDesc:"From your uploaded selfie, without changing your faces, create a dreamy couple portrait on a shimmering boat with Udaipur's fairytale Lake Palace glowing behind.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a pastel pink chiffon saree, her dark hair styled in soft curls with a small marigold tucked in. The man stands beside her in a beige linen suit, holding her hand. They are positioned on a boat near Udaipur's Lake Palace during golden hour, with warm light reflecting on the calm lake and palace in the background. The mood is dreamy, serene, painterly, and timeless. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:19,category:"Waterways & Lakes",location:"Kerala Backwaters",emoji:"🌴",time:"Early Morning",shortDesc:"From your uploaded selfie, without changing your faces, create a tranquil couple portrait on a Kerala houseboat drifting through glassy backwaters in soft morning light.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a soft mint green chiffon saree, her hair styled in loose curls with a small jasmine flower tucked in. The man stands beside her in a light beige linen suit, gently holding her hand. They are positioned on a traditional Kerala houseboat floating on the serene backwaters during early morning light, with soft sunlight reflecting off the calm water. The mood is tranquil, painterly, and timeless, evoking a gentle 90s Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:20,category:"Waterways & Lakes",location:"Rishikesh, Ganges River",emoji:"🙏",time:"Early Morning",shortDesc:"From your uploaded selfie, without changing your faces, create a mystical couple portrait on the misty Ganges banks at Rishikesh as the sacred river breathes in dawn.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears an ivory chiffon saree, her hair styled in loose waves adorned with small jasmine flowers. The man stands beside her in a light grey formal suit, softly holding her hand. They are positioned on the banks of the Ganges River in Rishikesh during early morning, with mist rising from the river and soft sunlight creating a mystical atmosphere. The mood is spiritual, tranquil, painterly, and timeless. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:21,category:"Waterways & Lakes",location:"Alleppey Floating Villas",emoji:"🌺",time:"Sunset",shortDesc:"From your uploaded selfie, without changing your faces, create a romantic couple portrait on a floating villa deck as Alleppey's backwaters mirror a warm tropical sunset.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a pastel blue chiffon saree, her hair flowing in soft waves adorned with a small white flower. The man stands beside her in a light beige linen suit, softly holding her hand. They are positioned on the deck of a floating villa in Alleppey Backwaters during sunset, with calm waters reflecting the warm light and palm trees in the background. The mood is tranquil, dreamy, painterly, and timeless, inspired by vintage Bollywood romance. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:22,category:"Waterways & Lakes",location:"Mumbai Marine Drive",emoji:"🌃",time:"Twilight",shortDesc:"From your uploaded selfie, without changing your faces, create a cinematic urban couple portrait along Mumbai's glittering Marine Drive as the city lights ignite at twilight.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a soft pastel blue chiffon saree, her dark wavy hair styled with a small white flower tucked behind her ear. The man stands beside her in a light grey formal suit, gently holding her hand. They are positioned along Mumbai's Marine Drive during twilight, with the city skyline illuminated and soft reflections of lights on the sea creating a cinematic atmosphere. The mood is urban, romantic, painterly, and timeless, like a vintage Bollywood love story. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:23,category:"Nature & Fantasy",location:"Secluded Waterfall",emoji:"💦",time:"Mid-Morning",shortDesc:"From your uploaded selfie, without changing your faces, create a dreamy couple portrait in a secret waterfall mist — soft, magical, like a 90s Bollywood dream.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a light sky-blue chiffon saree, her dark wavy hair loosely braided with small white flowers interwoven. The man stands beside her in a light grey formal suit, softly holding her hand. They are positioned at the base of a secluded waterfall during mid-morning, with mist from cascading water creating a dreamy atmosphere and soft diffused light. The mood is serene, magical, painterly, and timeless, evoking a gentle 90s Bollywood romance. Both faces are clean, well-defined, and realistic, with no distortion. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, high resolution, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:24,category:"Nature & Fantasy",location:"Countryside Field",emoji:"🌾",time:"Sunset",shortDesc:"From your uploaded selfie, without changing your faces, create a rustic, warm couple portrait amid swaying countryside grass drenched in golden sunset light.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a mustard yellow flowy dress, her hair in loose waves decorated with small wildflowers. The man stands beside her in a light brown casual suit, holding her hand. They are in an open countryside field during sunset, with tall grass swaying and golden light creating a warm, intimate atmosphere. The mood is rustic, dreamy, painterly, and timeless, evoking the nostalgia of 90s Bollywood love stories. Both faces are clean, well-defined, and realistic, with no distortion. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, high resolution, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:25,category:"Nature & Fantasy",location:"Flower Field",emoji:"🌸",time:"Midday",shortDesc:"From your uploaded selfie, without changing your faces, create a joyful, sun-soaked couple portrait surrounded by an ocean of vibrant wildflowers at peak bloom.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a bright yellow chiffon saree, her hair flowing freely with a small bunch of daisies pinned in. The man stands beside her in a cream-colored suit, gently holding her hand. They are in an expansive flower field under clear midday sunlight, with vibrant wildflowers surrounding them. The mood is cheerful, vibrant, painterly, and timeless, like a light-hearted 90s Bollywood film. Both faces are clean, well-defined, and realistic, with no distortion. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, high resolution, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:26,category:"Nature & Fantasy",location:"Night Sky Observatory",emoji:"🌌",time:"Clear Night",shortDesc:"From your uploaded selfie, without changing your faces, create a cosmic couple portrait gazing up at a star-filled night sky from an observatory terrace.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a midnight blue chiffon saree adorned with subtle silver stars, her hair styled in loose waves. The man stands beside her in a dark grey formal suit, both looking up at the starry night sky. They are positioned at an observatory terrace during clear night, with telescopes and soft ambient lights around, creating a quiet, cosmic atmosphere. The mood is dreamy, serene, painterly, and timeless, inspired by classic Bollywood romance. Both faces are clean, well-defined, and realistic, with no distortion. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, high resolution, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:27,category:"Lifestyle & Urban",location:"Vintage Library",emoji:"📚",time:"Ambient Light",shortDesc:"From your uploaded selfie, without changing your faces, create a cozy, intellectual couple portrait inside a warm vintage library wrapped in golden lamplight.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears an elegant maroon silk saree, her hair styled in soft waves pinned back. The man stands beside her in a dark brown tweed suit, his gaze full of affection. They are posed inside a vintage library with towering bookshelves and soft golden ambient lighting, creating a warm, intellectual atmosphere. The mood is classic, cozy, painterly, and timeless, reminiscent of a 90s Bollywood movie. Both faces are clean, well-defined, and realistic, with no distortion. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, high resolution, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:28,category:"Lifestyle & Urban",location:"Rainy Cobblestone Street",emoji:"☔",time:"Light Drizzle",shortDesc:"From your uploaded selfie, without changing your faces, create a moody, romantic couple portrait under an umbrella on a rain-soaked cobblestone street at night.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a light pink chiffon saree, her hair gently curled and falling around her shoulders. The man stands beside her in a dark blue formal suit, holding a large umbrella over them. They are on a narrow cobblestone street during a light drizzle, with wet pavement reflecting ambient light and vintage lampposts in the background. The atmosphere is moody, romantic, painterly, and timeless, like a classic 90s Bollywood romance. Both faces are clean, well-defined, and realistic, with no distortion. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, high resolution, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:29,category:"Lifestyle & Urban",location:"Modern Art Gallery",emoji:"🎨",time:"Diffused Light",shortDesc:"From your uploaded selfie, without changing your faces, create a sleek, contemporary couple portrait inside a minimalist white art gallery with abstract art as backdrop.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a pastel lavender saree with subtle silver accents, her hair styled in soft curls. The man stands beside her in a sleek black suit, gently holding her waist. They are inside a modern art gallery with minimalistic decor, large white walls, and abstract paintings, illuminated by soft diffused light. The mood is contemporary, artistic, painterly, and timeless, with an elegant Bollywood cinematic vibe. Both faces are clean, well-defined, and realistic, with no distortion. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, high resolution, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+  {id:30,category:"Lifestyle & Urban",location:"Sula Vineyards, Nashik",emoji:"🍇",time:"Golden Hour",shortDesc:"From your uploaded selfie, without changing your faces, create a romantic couple portrait strolling through lush Nashik grapevines glowing in golden harvest light.",prompt:"A romantic pre-wedding photoshoot of an Indian couple standing together in a cinematic setting. The woman wears a light wine-red chiffon saree, her hair styled in soft waves with a small rose tucked in. The man stands beside her in a beige linen suit, gently holding her hand. They are positioned amidst the lush grapevines of Sula Vineyards during golden hour, with warm sunlight casting long shadows and the vineyard stretching behind them. The mood is rustic, romantic, painterly, and timeless, like a vintage Bollywood love story. Based on the reference image uploaded, generate a very high-resolution, ultra-realistic output, preserving the facial features exactly as in the reference photo. Both faces are clean, well-defined, and realistic, with no distortion. The background is softly grainy, vintage-inspired, with dramatic yet soft lighting and balanced composition. Full body, cinematic framing.",negative:"distorted faces, low resolution, blurry, cartoonish, extra limbs, bad anatomy, unrealistic expressions, overexposed highlights, text overlay"},
+];
+
+let currentCategory = "All";
+let currentSearch = "";
+let expandedId = null;
+
+const pillsEl = document.getElementById("catPills");
+const selectEl = document.getElementById("catSelect");
+categories.forEach(c => {
+  const btn = document.createElement("button");
+  btn.className = "cat-pill" + (c === "All" ? " active" : "");
+  btn.textContent = c;
+  btn.onclick = () => setCategory(c);
+  pillsEl.appendChild(btn);
+  const opt = document.createElement("option");
+  opt.value = c; opt.textContent = c;
+  selectEl.appendChild(opt);
+});
+selectEl.onchange = e => setCategory(e.target.value);
+document.getElementById("searchInput").oninput = e => {
+  currentSearch = e.target.value.toLowerCase();
+  render();
+};
+
+function setCategory(c) {
+  currentCategory = c;
+  document.querySelectorAll(".cat-pill").forEach(p => p.classList.toggle("active", p.textContent === c));
+  selectEl.value = c;
+  render();
+}
+
+function filtered() {
+  return prompts.filter(p => {
+    const matchCat = currentCategory === "All" || p.category === currentCategory;
+    const matchSearch = !currentSearch || p.location.toLowerCase().includes(currentSearch) || p.category.toLowerCase().includes(currentSearch) || p.shortDesc.toLowerCase().includes(currentSearch);
+    return matchCat && matchSearch;
+  });
+}
+
+function copyPrompt(p, btn) {
+  const text = `PROMPT:\n${p.prompt}\n\nNEGATIVE PROMPT:\n${p.negative}`;
+  const fallback = () => {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;pointer-events:none;";
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand("copy"); } catch {}
+    document.body.removeChild(ta);
+    showCopied(btn);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(() => showCopied(btn)).catch(fallback);
+  } else { fallback(); }
+}
+
+function showCopied(btn) {
+  btn.textContent = "✓ Copied!";
+  btn.classList.add("copied");
+  setTimeout(() => { btn.textContent = "⎘ Copy Prompt"; btn.classList.remove("copied"); }, 2000);
+}
+
+function render() {
+  const list = filtered();
+  const grid = document.getElementById("grid");
+  const bar = document.getElementById("resultsBar");
+  bar.textContent = `${list.length} prompt${list.length !== 1 ? "s" : ""} ${currentCategory !== "All" ? "in " + currentCategory : "total"}${currentSearch ? ` · matching "${currentSearch}"` : ""}`;
+  grid.innerHTML = "";
+  if (!list.length) {
+    grid.innerHTML = `<div class="empty"><div class="empty-emoji">🎞️</div><div class="empty-title">No prompts found for this search</div></div>`;
+    return;
+  }
+  list.forEach(p => {
+    const isExp = expandedId === p.id;
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <div class="card-accent-bar"></div>
+      <div class="card-header">
+        <div class="card-emoji">${p.emoji}</div>
+        <div class="card-meta">
+          <div class="card-cat"><span class="card-cat-dot"></span>${p.category}</div>
+          <div class="card-title">${p.location}</div>
+          <div class="card-time">🕐 ${p.time}</div>
+        </div>
+      </div>
+      <p class="card-desc">"${p.shortDesc}"</p>
+      <div class="card-divider"></div>
+      <div class="card-prompt-preview">
+        <div class="prompt-text ${isExp ? "expanded" : ""}" id="pt-${p.id}">${p.prompt}</div>
+      </div>
+      ${isExp ? `<div class="negative-preview"><div class="negative-label">⊖ Negative Prompt</div><div class="negative-text">${p.negative}</div></div>` : ""}
+      <div class="card-actions">
+        <button class="btn btn-primary" id="copy-${p.id}">⎘ Copy Prompt</button>
+        <button class="btn btn-ghost" id="exp-${p.id}" title="${isExp ? "Collapse" : "Expand"}">${isExp ? "↑" : "↓"}</button>
+      </div>
+    `;
+    grid.appendChild(card);
+    card.querySelector(`#copy-${p.id}`).onclick = function() { copyPrompt(p, this); };
+    card.querySelector(`#exp-${p.id}`).onclick = () => {
+      expandedId = isExp ? null : p.id;
+      render();
+    };
+  });
+}
+
+render();
+</script>
+</body>
+</html>

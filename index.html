@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gap2Growth — AI Resource Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5F4FF;
+  --surface:#FFFFFF;
+  --surface2:#EEEEFF;
+  --border:#DDD9FF;
+  --accent:#5B3FE8;
+  --accent2:#FF6B35;
+  --accent3:#00C9A7;
+  --accent4:#FFB347;
+  --text:#0D0B1E;
+  --text-muted:#5D5A7A;
+  --text-dim:#A09EC0;
+  --font-display:'Fraunces',serif;
+  --font-body:'Plus Jakarta Sans',sans-serif;
+  --radius:8px;--radius-lg:16px;--radius-xl:20px;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh}
+
+/* ── HEADER ── */
+.header{
+  position:relative;padding:0 40px;overflow:hidden;
+  background:linear-gradient(135deg,#0D0B1E 0%,#1A1060 50%,#2B1B8C 100%);
+}
+.header-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.glow1{position:absolute;top:-100px;left:20%;width:500px;height:400px;background:radial-gradient(ellipse,rgba(91,63,232,.4) 0%,transparent 65%);pointer-events:none}
+.glow2{position:absolute;bottom:-80px;right:5%;width:400px;height:350px;background:radial-gradient(ellipse,rgba(255,107,53,.25) 0%,transparent 65%);pointer-events:none}
+.glow3{position:absolute;top:30%;left:-60px;width:300px;height:300px;background:radial-gradient(ellipse,rgba(0,201,167,.15) 0%,transparent 65%);pointer-events:none}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 0 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-img{height:36px;object-fit:contain;filter:brightness(0) invert(1)}
+.topbar-nav{display:flex;align-items:center;gap:24px}
+.topbar-link{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.topbar-link:hover{color:#fff}
+.topbar-cta{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;transition:opacity .2s}
+.topbar-cta:hover{opacity:.85}
+
+.hero{padding:64px 0 72px;display:flex;align-items:center;gap:48px;position:relative;z-index:1}
+.hero-left{flex:1}
+.hero-label{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent3);margin-bottom:20px}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--accent3);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.8)}}
+.hero-title{font-family:var(--font-display);font-size:clamp(36px,5.5vw,62px);font-weight:300;line-height:1.08;color:#fff;letter-spacing:-.5px;margin-bottom:18px}
+.hero-title em{font-style:italic;background:linear-gradient(90deg,var(--accent2),var(--accent4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.5);line-height:1.7;max-width:460px;margin-bottom:32px}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap}
+.stat{text-align:left}
+.stat-num{font-family:var(--font-display);font-size:28px;font-weight:400;color:#fff;line-height:1}
+.stat-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px}
+.stat-divider{width:1px;background:rgba(255,255,255,.1);align-self:stretch}
+
+.hero-right{flex-shrink:0;display:flex;flex-direction:column;gap:10px}
+.hero-pill{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:12px 18px;backdrop-filter:blur(10px);
+  text-decoration:none;transition:background .2s,border-color .2s,transform .2s;
+  min-width:240px;
+}
+.hero-pill:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);transform:translateX(4px)}
+.hero-pill-icon{font-size:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:rgba(255,255,255,.08);flex-shrink:0}
+.hero-pill-text{flex:1}
+.hero-pill-name{font-size:13px;font-weight:600;color:#fff}
+.hero-pill-desc{font-size:10px;color:rgba(255,255,255,.4);margin-top:1px}
+.hero-pill-arrow{font-size:12px;color:rgba(255,255,255,.3)}
+
+/* ── MAIN ── */
+main{max-width:1160px;margin:0 auto;padding:56px 40px 80px}
+
+.section{margin-bottom:52px}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;gap:16px;flex-wrap:wrap}
+.section-title-wrap{}
+.section-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.section-title{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:300;color:var(--text);line-height:1.2}
+.section-title em{font-style:italic;color:var(--text-muted)}
+.section-see-all{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1.5px solid var(--border);padding:6px 16px;border-radius:20px;transition:all .2s;white-space:nowrap}
+.section-see-all:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* GUIDE CARDS (2-col large) */
+.guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.guide-card{
+  position:relative;border-radius:var(--radius-xl);overflow:hidden;
+  text-decoration:none;display:block;
+  border:1.5px solid var(--border);background:var(--surface);
+  transition:transform .25s,box-shadow .25s,border-color .25s;
+}
+.guide-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(91,63,232,.13);border-color:var(--accent)}
+.guide-card-top{height:5px}
+.guide-card-body{padding:24px}
+.guide-card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+.guide-card-tag{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px}
+.guide-card-title{font-family:var(--font-display);font-size:20px;font-weight:400;color:var(--text);line-height:1.25;margin-bottom:8px}
+.guide-card-desc{font-size:12.5px;color:var(--text-muted);line-height:1.65;font-weight:400}
+.guide-card-footer{padding:16px 24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.guide-card-meta{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim)}
+.guide-card-arrow{width:28px;height:28px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-muted);transition:all .2s}
+.guide-card:hover .guide-card-arrow{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* TOOL LINKS GRID */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.tool-card{
+  background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-lg);
+  padding:20px 16px;text-align:center;text-decoration:none;
+  transition:transform .2s,box-shadow .2s,border-color .2s;display:block;
+}
+.tool-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(91,63,232,.1);border-color:var(--accent)}
+.tool-icon{font-size:28px;margin-bottom:10px;display:block}
+.tool-name{font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px}
+.tool-category{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim)}
+.tool-badge{
+  display:inline-block;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:2px 8px;border-radius:10px;margin-top:8px;
+}
+
+/* PROMPT COLLECTION ROW */
+.prompts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.prompt-card{
+  background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-lg);
+  padding:20px;text-decoration:none;display:flex;align-items:flex-start;gap:14px;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.prompt-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(91,63,232,.1);border-color:var(--accent)}
+.prompt-card-icon{font-size:26px;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prompt-card-text{}
+.prompt-card-cat{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.prompt-card-title{font-family:var(--font-display);font-size:15px;font-weight:400;color:var(--text);line-height:1.3;margin-bottom:4px}
+.prompt-card-count{font-size:11px;color:var(--text-dim);font-weight:500}
+
+/* QUICK ACCESS STRIP */
+.quick-strip{display:flex;gap:10px;flex-wrap:wrap}
+.quick-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--surface);border:1.5px solid var(--border);border-radius:24px;
+  padding:9px 18px;text-decoration:none;
+  font-size:12px;font-weight:600;color:var(--text-muted);
+  transition:all .2s;white-space:nowrap;
+}
+.quick-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(91,63,232,.05)}
+.quick-chip-icon{font-size:15px}
+
+/* BANNER */
+.banner{
+  border-radius:var(--radius-xl);overflow:hidden;position:relative;
+  background:linear-gradient(135deg,#0D0B1E 0%,#1A1060 50%,#2B1B8C 100%);
+  padding:40px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.banner-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
+.banner-glow{position:absolute;right:-40px;top:-40px;width:300px;height:300px;background:radial-gradient(ellipse,rgba(255,107,53,.2) 0%,transparent 65%);pointer-events:none}
+.banner-text{position:relative;z-index:1}
+.banner-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent3);margin-bottom:10px}
+.banner-title{font-family:var(--font-display);font-size:clamp(22px,3vw,32px);font-weight:300;color:#fff;line-height:1.2;margin-bottom:10px}
+.banner-title em{font-style:italic;background:linear-gradient(90deg,var(--accent2),var(--accent4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.banner-sub{font-size:13px;color:rgba(255,255,255,.45);max-width:420px;line-height:1.6}
+.banner-cta{position:relative;z-index:1;flex-shrink:0}
+.btn-hero{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7B62F0);color:#fff;font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;box-shadow:0 4px 20px rgba(91,63,232,.35);transition:all .2s}
+.btn-hero:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(91,63,232,.45)}
+.btn-hero-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);box-shadow:none}
+.btn-hero-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff;box-shadow:none}
+
+/* FOOTER */
+.footer{background:linear-gradient(135deg,#0D0B1E,#1A1060);padding:28px 40px}
+.footer-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-logo{height:28px;object-fit:contain;filter:brightness(0) invert(1);opacity:.65}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-link{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-link:hover{color:var(--accent2)}
+.footer-copy{font-size:10px;color:rgba(255,255,255,.2);letter-spacing:1px}
+
+/* COLOR HELPERS */
+.c-purple{color:var(--accent)}.c-orange{color:var(--accent2)}.c-teal{color:var(--accent3)}.c-yellow{color:var(--accent4)}
+.bg-purple{background:rgba(91,63,232,.1)}.bg-orange{background:rgba(255,107,53,.1)}.bg-teal{background:rgba(0,201,167,.1)}.bg-yellow{background:rgba(255,179,71,.1)}.bg-pink{background:rgba(236,72,153,.1)}
+.bar-purple{background:linear-gradient(90deg,var(--accent),#9B7FFF)}
+.bar-orange{background:linear-gradient(90deg,var(--accent2),var(--accent4))}
+.bar-teal{background:linear-gradient(90deg,var(--accent3),#00E5C8)}
+.bar-pink{background:linear-gradient(90deg,#EC4899,#F472B6)}
+.bar-yellow{background:linear-gradient(90deg,var(--accent4),#FFD580)}
+
+@media(max-width:768px){
+  .header,.footer{padding-left:20px;padding-right:20px}
+  main{padding:36px 20px 60px}
+  .hero{flex-direction:column;gap:32px;padding:44px 0 52px}
+  .hero-right{width:100%}
+  .hero-pill{min-width:unset}
+  .topbar-nav .topbar-link{display:none}
+  .banner{padding:28px 24px}
+  .footer-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-dots"></div>
+  <div class="glow1"></div><div class="glow2"></div><div class="glow3"></div>
+
+  <div class="topbar">
+    <a href="https://gap2growth.in" target="_blank" class="logo-wrap">
+      <img class="logo-img" src="https://gap2growth.in/wp-content/uploads/2025/12/cropped-Gap-2-Growth-scaled-1-300x98.png" alt="Gap2Growth"/>
+    </a>
+    <nav class="topbar-nav">
+      <a href="https://gap2growth.in/#courses" target="_blank" class="topbar-link">Courses</a>
+      <a href="https://gap2growth.in/blogs/" target="_blank" class="topbar-link">Blogs</a>
+      <a href="https://gap2growth.in/inquire-now/" target="_blank" class="topbar-cta">Inquire Now</a>
+    </nav>
+  </div>
+
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-label"><span class="pulse"></span>AI Resource Hub</div>
+      <h1 class="hero-title">Your <em>Complete</em><br>AI Toolkit &<br>Learning Hub</h1>
+      <p class="hero-sub">Everything you need to learn, create, and grow in the AI-first world — guides, prompts, tools, and resources, all in one place.</p>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Prompt Guides</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><div class="stat-num">15+</div><div class="stat-label">AI Tools</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Skill Areas</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <a href="gap2growth-prewedding-prompts.html" class="hero-pill">
+        <div class="hero-pill-icon">📸</div>
+        <div class="hero-pill-text">
+          <div class="hero-pill-name">Pre-Wedding AI Prompts</div>
+          <div class="hero-pill-desc">30 cinematic locations · Face-preserve</div>
+        </div>
+        <span class="hero-pill-arrow">→</span>
+      </a>
+      <a href="https://chat.openai.com" target="_blank" class="hero-pill">
+        <div class="hero-pill-icon">🤖</div>
+        <div class="hero-pill-text">
+          <div class="hero-pill-name">ChatGPT</div>
+          <div class="hero-pill-desc">Open AI assistant</div>
+        </div>
+        <span class="hero-pill-arrow">→</span>
+      </a>
+      <a href="https://claude.ai" target="_blank" class="hero-pill">
+        <div class="hero-pill-icon">✦</div>
+        <div class="hero-pill-text">
+          <div class="hero-pill-name">Claude AI</div>
+          <div class="hero-pill-desc">Anthropic's AI assistant</div>
+        </div>
+        <span class="hero-pill-arrow">→</span>
+      </a>
+      <a href="https://www.canva.com" target="_blank" class="hero-pill">
+        <div class="hero-pill-icon">🎨</div>
+        <div class="hero-pill-text">
+          <div class="hero-pill-name">Canva</div>
+          <div class="hero-pill-desc">Design & visual creation</div>
+        </div>
+        <span class="hero-pill-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main>
+
+  <!-- QUICK ACCESS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Quick Access</div>
+        <h2 class="section-title">Jump to <em>what you need</em></h2>
+      </div>
+    </div>
+    <div class="quick-strip">
+      <a href="#guides" class="quick-chip"><span class="quick-chip-icon">📖</span> Guides & Tutorials</a>
+      <a href="#prompts" class="quick-chip"><span class="quick-chip-icon">✍️</span> Prompt Collections</a>
+      <a href="#skills" class="quick-chip"><span class="quick-chip-icon">🎯</span> Skills Hub</a>
+      <a href="#ai-tools" class="quick-chip"><span class="quick-chip-icon">🤖</span> AI Tools</a>
+      <a href="#design-tools" class="quick-chip"><span class="quick-chip-icon">🎨</span> Design Tools</a>
+      <a href="#productivity" class="quick-chip"><span class="quick-chip-icon">⚡</span> Productivity</a>
+      <a href="https://gap2growth.in/inquire-now/" target="_blank" class="quick-chip"><span class="quick-chip-icon">📞</span> Contact Us</a>
+    </div>
+  </section>
+
+  <!-- GUIDES -->
+  <section class="section" id="guides">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Learning Resources</div>
+        <h2 class="section-title">Guides & <em>Tutorials</em></h2>
+      </div>
+    </div>
+    <div class="guides-grid">
+
+      <a href="gap2growth-prewedding-prompts.html" class="guide-card">
+        <div class="guide-card-top bar-orange"></div>
+        <div class="guide-card-body">
+          <div class="guide-card-icon bg-orange">📸</div>
+          <div class="guide-card-tag c-orange">Prompt Guide</div>
+          <div class="guide-card-title">Cinematic Pre-Wedding AI Prompts</div>
+          <div class="guide-card-desc">30 curated AI image prompts for breathtaking pre-wedding shoots across India. Upload your selfie, preserve your face, create magic.</div>
+        </div>
+        <div class="guide-card-footer">
+          <span class="guide-card-meta">30 Prompts · Face-Preserve</span>
+          <div class="guide-card-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="https://gap2growth.in/blogs/" target="_blank" class="guide-card">
+        <div class="guide-card-top bar-purple"></div>
+        <div class="guide-card-body">
+          <div class="guide-card-icon bg-purple">🧠</div>
+          <div class="guide-card-tag c-purple">AI Guide</div>
+          <div class="guide-card-title">Prompt Engineering Fundamentals</div>
+          <div class="guide-card-desc">Master the art of writing effective prompts for ChatGPT, Claude, and Gemini. Learn structuring, context-setting, and output control.</div>
+        </div>
+        <div class="guide-card-footer">
+          <span class="guide-card-meta">Beginner → Advanced</span>
+          <div class="guide-card-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="https://gap2growth.in/blogs/" target="_blank" class="guide-card">
+        <div class="guide-card-top bar-teal"></div>
+        <div class="guide-card-body">
+          <div class="guide-card-icon bg-teal">🎨</div>
+          <div class="guide-card-tag c-teal">Design Guide</div>
+          <div class="guide-card-title">AI Image Generation Masterclass</div>
+          <div class="guide-card-desc">From Midjourney to DALL·E — learn how to generate stunning visuals, control styles, and produce professional-grade AI imagery.</div>
+        </div>
+        <div class="guide-card-footer">
+          <span class="guide-card-meta">Visual · Practical</span>
+          <div class="guide-card-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="https://gap2growth.in/blogs/" target="_blank" class="guide-card">
+        <div class="guide-card-top bar-pink"></div>
+        <div class="guide-card-body">
+          <div class="guide-card-icon bg-pink">📐</div>
+          <div class="guide-card-tag" style="color:#EC4899">Design Skills</div>
+          <div class="guide-card-title">Adobe Illustrator for Beginners</div>
+          <div class="guide-card-desc">Build vector design skills from scratch — logos, icons, layouts. Learn the tools that power professional graphic design workflows.</div>
+        </div>
+        <div class="guide-card-footer">
+          <span class="guide-card-meta">12 Modules · Hands-on</span>
+          <div class="guide-card-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="https://gap2growth.in/blogs/" target="_blank" class="guide-card">
+        <div class="guide-card-top bar-yellow"></div>
+        <div class="guide-card-body">
+          <div class="guide-card-icon bg-yellow">⚡</div>
+          <div class="guide-card-tag c-yellow">Automation</div>
+          <div class="guide-card-title">AI Workflow Automation Guide</div>
+          <div class="guide-card-desc">Automate repetitive tasks using AI tools. From content scheduling to client reporting — build systems that save you 10+ hours a week.</div>
+        </div>
+        <div class="guide-card-footer">
+          <span class="guide-card-meta">Practical Templates</span>
+          <div class="guide-card-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="https://gap2growth.in/blogs/" target="_blank" class="guide-card">
+        <div class="guide-card-top bar-purple"></div>
+        <div class="guide-card-body">
+          <div class="guide-card-icon bg-purple">💼</div>
+          <div class="guide-card-tag c-purple">Career</div>
+          <div class="guide-card-title">Freelancing with AI Skills</div>
+          <div class="guide-card-desc">Turn your AI & design skills into income. A practical guide on finding clients, pricing projects, and building a freelance portfolio.</div>
+        </div>
+        <div class="guide-card-footer">
+          <span class="guide-card-meta">Income · Portfolio</span>
+          <div class="guide-card-arrow">→</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- PROMPT COLLECTIONS -->
+  <section class="section" id="prompts">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Ready-to-Use</div>
+        <h2 class="section-title">Prompt <em>Collections</em></h2>
+      </div>
+    </div>
+    <div class="prompts-grid">
+
+      <a href="gap2growth-prewedding-prompts.html" class="prompt-card">
+        <div class="prompt-card-icon bg-orange">💑</div>
+        <div class="prompt-card-text">
+          <div class="prompt-card-cat">Photography</div>
+          <div class="prompt-card-title">Pre-Wedding Cinematic Prompts</div>
+          <div class="prompt-card-count">30 prompts · India locations</div>
+        </div>
+      </a>
+
+      <a href="https://gap2growth.in/blogs/" target="_blank" class="prompt-card">
+        <div class="prompt-card-icon bg-purple">📱</div>
+        <div class="prompt-card-text">
+          <div class="prompt-card-cat">Social Media</div>
+          <div class="prompt-card-title">Instagram Content Prompts</div>
+          <div class="prompt-card-count">50 prompts · Reels & Posts</div>
+        </div>
+      </a>
+
+      <a href="https://gap2growth.in/blogs/" target="_blank" class="prompt-card">
+        <div class="prompt-card-icon bg-teal">🏢</div>
+        <div class="prompt-card-text">
+          <div class="prompt-card-cat">Business</div>
+          <div class="prompt-card-title">Brand & Logo Design Prompts</div>
+          <div class="prompt-card-count">40 prompts · Visual identity</div>
+        </div>
+      </a>
+
+      <a href="https://gap2growth.in/blogs/" target="_blank" class="prompt-card">
+        <div class="prompt-card-icon bg-pink">✍️</div>
+        <div class="prompt-card-text">
+          <div class="prompt-card-cat">Copywriting</div>
+          <div class="prompt-card-title">Marketing Copy Prompts</div>
+          <div class="prompt-card-count">60 prompts · Ads, emails, web</div>
+        </div>
+      </a>
+
+      <a href="https://gap2growth.in/blogs/" target="_blank" class="prompt-card">
+        <div class="prompt-card-icon bg-yellow">🎬</div>
+        <div class="prompt-card-text">
+          <div class="prompt-card-cat">Video</div>
+          <div class="prompt-card-title">Video Script Prompts</div>
+          <div class="prompt-card-count">25 prompts · YouTube & Reels</div>
+        </div>
+      </a>
+
+      <a href="https://gap2growth.in/blogs/" target="_blank" class="prompt-card">
+        <div class="prompt-card-icon bg-purple">🖼️</div>
+        <div class="prompt-card-text">
+          <div class="prompt-card-cat">Art & Illustration</div>
+          <div class="prompt-card-title">AI Art Style Prompts</div>
+          <div class="prompt-card-count">45 prompts · Styles & moods</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- SKILLS HUB -->
+  <section class="section" id="skills">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Gap2Growth Courses</div>
+        <h2 class="section-title">Skills <em>Hub</em></h2>
+      </div>
+      <a href="https://gap2growth.in/#courses" target="_blank" class="section-see-all">View All Courses →</a>
+    </div>
+    <div class="tools-grid">
+
+      <a href="https://gap2growth.in/#courses" target="_blank" class="tool-card">
+        <span class="tool-icon">🤖</span>
+        <div class="tool-name">AI Fundamentals</div>
+        <div class="tool-category">Core Course</div>
+        <span class="tool-badge" style="background:rgba(91,63,232,.12);color:var(--accent)">Beginner</span>
+      </a>
+
+      <a href="https://gap2growth.in/#courses" target="_blank" class="tool-card">
+        <span class="tool-icon">✍️</span>
+        <div class="tool-name">Prompt Engineering</div>
+        <div class="tool-category">Core Course</div>
+        <span class="tool-badge" style="background:rgba(255,107,53,.12);color:var(--accent2)">Popular</span>
+      </a>
+
+      <a href="https://gap2growth.in/#courses" target="_blank" class="tool-card">
+        <span class="tool-icon">🎨</span>
+        <div class="tool-name">Adobe Illustrator</div>
+        <div class="tool-category">Design</div>
+        <span class="tool-badge" style="background:rgba(0,201,167,.12);color:var(--accent3)">Hands-on</span>
+      </a>
+
+      <a href="https://gap2growth.in/#courses" target="_blank" class="tool-card">
+        <span class="tool-icon">📸</span>
+        <div class="tool-name">Adobe Photoshop</div>
+        <div class="tool-category">Design</div>
+        <span class="tool-badge" style="background:rgba(91,63,232,.12);color:var(--accent)">Practical</span>
+      </a>
+
+      <a href="https://gap2growth.in/#courses" target="_blank" class="tool-card">
+        <span class="tool-icon">🖌️</span>
+        <div class="tool-name">Canva Mastery</div>
+        <div class="tool-category">Design</div>
+        <span class="tool-badge" style="background:rgba(255,179,71,.15);color:#c97d00">Fast Track</span>
+      </a>
+
+      <a href="https://gap2growth.in/#courses" target="_blank" class="tool-card">
+        <span class="tool-icon">📊</span>
+        <div class="tool-name">AI for Business</div>
+        <div class="tool-category">Business</div>
+        <span class="tool-badge" style="background:rgba(236,72,153,.1);color:#EC4899">New</span>
+      </a>
+
+      <a href="https://gap2growth.in/#courses" target="_blank" class="tool-card">
+        <span class="tool-icon">🎬</span>
+        <div class="tool-name">Video Editing</div>
+        <div class="tool-category">Media</div>
+        <span class="tool-badge" style="background:rgba(0,201,167,.12);color:var(--accent3)">Trending</span>
+      </a>
+
+      <a href="https://gap2growth.in/#courses" target="_blank" class="tool-card">
+        <span class="tool-icon">💼</span>
+        <div class="tool-name">Freelancing Pro</div>
+        <div class="tool-category">Career</div>
+        <span class="tool-badge" style="background:rgba(255,107,53,.12);color:var(--accent2)">Career</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- AI TOOLS -->
+  <section class="section" id="ai-tools">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Frequently Used</div>
+        <h2 class="section-title">AI <em>Tools</em></h2>
+      </div>
+    </div>
+    <div class="tools-grid">
+
+      <a href="https://chat.openai.com" target="_blank" class="tool-card">
+        <span class="tool-icon">💬</span>
+        <div class="tool-name">ChatGPT</div>
+        <div class="tool-category">Text · Code · Ideas</div>
+        <span class="tool-badge" style="background:rgba(16,185,129,.12);color:#059669">Free + Pro</span>
+      </a>
+
+      <a href="https://claude.ai" target="_blank" class="tool-card">
+        <span class="tool-icon">✦</span>
+        <div class="tool-name">Claude AI</div>
+        <div class="tool-category">Writing · Analysis</div>
+        <span class="tool-badge" style="background:rgba(91,63,232,.12);color:var(--accent)">Anthropic</span>
+      </a>
+
+      <a href="https://gemini.google.com" target="_blank" class="tool-card">
+        <span class="tool-icon">♊</span>
+        <div class="tool-name">Google Gemini</div>
+        <div class="tool-category">Multimodal AI</div>
+        <span class="tool-badge" style="background:rgba(66,133,244,.12);color:#4285F4">Google</span>
+      </a>
+
+      <a href="https://www.midjourney.com" target="_blank" class="tool-card">
+        <span class="tool-icon">🖼️</span>
+        <div class="tool-name">Midjourney</div>
+        <div class="tool-category">AI Image Gen</div>
+        <span class="tool-badge" style="background:rgba(255,107,53,.12);color:var(--accent2)">Popular</span>
+      </a>
+
+      <a href="https://openai.com/dall-e-3" target="_blank" class="tool-card">
+        <span class="tool-icon">🎨</span>
+        <div class="tool-name">DALL·E 3</div>
+        <div class="tool-category">AI Image Gen</div>
+        <span class="tool-badge" style="background:rgba(16,185,129,.12);color:#059669">In ChatGPT</span>
+      </a>
+
+      <a href="https://runwayml.com" target="_blank" class="tool-card">
+        <span class="tool-icon">🎬</span>
+        <div class="tool-name">Runway ML</div>
+        <div class="tool-category">AI Video Gen</div>
+        <span class="tool-badge" style="background:rgba(236,72,153,.1);color:#EC4899">Video AI</span>
+      </a>
+
+      <a href="https://elevenlabs.io" target="_blank" class="tool-card">
+        <span class="tool-icon">🎙️</span>
+        <div class="tool-name">ElevenLabs</div>
+        <div class="tool-category">AI Voice & Audio</div>
+        <span class="tool-badge" style="background:rgba(255,179,71,.15);color:#c97d00">Voice AI</span>
+      </a>
+
+      <a href="https://pika.art" target="_blank" class="tool-card">
+        <span class="tool-icon">⚡</span>
+        <div class="tool-name">Pika Labs</div>
+        <div class="tool-category">Text to Video</div>
+        <span class="tool-badge" style="background:rgba(91,63,232,.12);color:var(--accent)">New</span>
+      </a>
+
+      <a href="https://www.perplexity.ai" target="_blank" class="tool-card">
+        <span class="tool-icon">🔍</span>
+        <div class="tool-name">Perplexity AI</div>
+        <div class="tool-category">AI Search</div>
+        <span class="tool-badge" style="background:rgba(0,201,167,.12);color:var(--accent3)">Research</span>
+      </a>
+
+      <a href="https://suno.ai" target="_blank" class="tool-card">
+        <span class="tool-icon">🎵</span>
+        <div class="tool-name">Suno AI</div>
+        <div class="tool-category">AI Music Gen</div>
+        <span class="tool-badge" style="background:rgba(255,107,53,.12);color:var(--accent2)">Music AI</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- DESIGN TOOLS -->
+  <section class="section" id="design-tools">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Creative Suite</div>
+        <h2 class="section-title">Design <em>Tools</em></h2>
+      </div>
+    </div>
+    <div class="tools-grid">
+
+      <a href="https://www.canva.com" target="_blank" class="tool-card">
+        <span class="tool-icon">🖌️</span>
+        <div class="tool-name">Canva</div>
+        <div class="tool-category">Design · Templates</div>
+        <span class="tool-badge" style="background:rgba(91,63,232,.12);color:var(--accent)">Free + Pro</span>
+      </a>
+
+      <a href="https://www.adobe.com/products/photoshop.html" target="_blank" class="tool-card">
+        <span class="tool-icon">📸</span>
+        <div class="tool-name">Photoshop</div>
+        <div class="tool-category">Photo Editing</div>
+        <span class="tool-badge" style="background:rgba(66,133,244,.12);color:#4285F4">Adobe</span>
+      </a>
+
+      <a href="https://www.adobe.com/products/illustrator.html" target="_blank" class="tool-card">
+        <span class="tool-icon">✏️</span>
+        <div class="tool-name">Illustrator</div>
+        <div class="tool-category">Vector Design</div>
+        <span class="tool-badge" style="background:rgba(66,133,244,.12);color:#4285F4">Adobe</span>
+      </a>
+
+      <a href="https://www.figma.com" target="_blank" class="tool-card">
+        <span class="tool-icon">🔷</span>
+        <div class="tool-name">Figma</div>
+        <div class="tool-category">UI/UX Design</div>
+        <span class="tool-badge" style="background:rgba(255,107,53,.12);color:var(--accent2)">Popular</span>
+      </a>
+
+      <a href="https://stock.adobe.com" target="_blank" class="tool-card">
+        <span class="tool-icon">📦</span>
+        <div class="tool-name">Adobe Stock</div>
+        <div class="tool-category">Assets & Media</div>
+        <span class="tool-badge" style="background:rgba(66,133,244,.12);color:#4285F4">Adobe</span>
+      </a>
+
+      <a href="https://unsplash.com" target="_blank" class="tool-card">
+        <span class="tool-icon">🌄</span>
+        <div class="tool-name">Unsplash</div>
+        <div class="tool-category">Free Photos</div>
+        <span class="tool-badge" style="background:rgba(0,201,167,.12);color:var(--accent3)">Free</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- PRODUCTIVITY -->
+  <section class="section" id="productivity">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Work Smarter</div>
+        <h2 class="section-title">Productivity <em>Apps</em></h2>
+      </div>
+    </div>
+    <div class="tools-grid">
+
+      <a href="https://app.asana.com" target="_blank" class="tool-card">
+        <span class="tool-icon">📋</span>
+        <div class="tool-name">Asana</div>
+        <div class="tool-category">Project Management</div>
+        <span class="tool-badge" style="background:rgba(255,107,53,.12);color:var(--accent2)">Free Tier</span>
+      </a>
+
+      <a href="https://notion.so" target="_blank" class="tool-card">
+        <span class="tool-icon">📝</span>
+        <div class="tool-name">Notion</div>
+        <div class="tool-category">Notes · Wiki · DB</div>
+        <span class="tool-badge" style="background:rgba(0,201,167,.12);color:var(--accent3)">Popular</span>
+      </a>
+
+      <a href="https://www.google.com/drive/" target="_blank" class="tool-card">
+        <span class="tool-icon">☁️</span>
+        <div class="tool-name">Google Drive</div>
+        <div class="tool-category">Cloud Storage</div>
+        <span class="tool-badge" style="background:rgba(66,133,244,.12);color:#4285F4">15GB Free</span>
+      </a>
+
+      <a href="https://workspace.google.com" target="_blank" class="tool-card">
+        <span class="tool-icon">📊</span>
+        <div class="tool-name">Google Workspace</div>
+        <div class="tool-category">Docs · Sheets · Meet</div>
+        <span class="tool-badge" style="background:rgba(66,133,244,.12);color:#4285F4">Google</span>
+      </a>
+
+      <a href="https://slack.com" target="_blank" class="tool-card">
+        <span class="tool-icon">💬</span>
+        <div class="tool-name">Slack</div>
+        <div class="tool-category">Team Communication</div>
+        <span class="tool-badge" style="background:rgba(91,63,232,.12);color:var(--accent)">Collab</span>
+      </a>
+
+      <a href="https://trello.com" target="_blank" class="tool-card">
+        <span class="tool-icon">🗂️</span>
+        <div class="tool-name">Trello</div>
+        <div class="tool-category">Kanban Boards</div>
+        <span class="tool-badge" style="background:rgba(0,201,167,.12);color:var(--accent3)">Free</span>
+      </a>
+
+      <a href="https://zoom.us" target="_blank" class="tool-card">
+        <span class="tool-icon">📹</span>
+        <div class="tool-name">Zoom</div>
+        <div class="tool-category">Video Meetings</div>
+        <span class="tool-badge" style="background:rgba(66,133,244,.12);color:#4285F4">Meetings</span>
+      </a>
+
+      <a href="https://www.loom.com" target="_blank" class="tool-card">
+        <span class="tool-icon">🎥</span>
+        <div class="tool-name">Loom</div>
+        <div class="tool-category">Screen Recording</div>
+        <span class="tool-badge" style="background:rgba(255,107,53,.12);color:var(--accent2)">Quick</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="banner">
+    <div class="banner-dots"></div>
+    <div class="banner-glow"></div>
+    <div class="banner-text">
+      <div class="banner-eyebrow">✦ Ready to Level Up?</div>
+      <h3 class="banner-title">Build <em>AI-Ready Skills</em><br>that launch careers</h3>
+      <p class="banner-sub">Join Gap2Growth — hands-on AI & design training with real projects, mentorship, and career support.</p>
+    </div>
+    <div class="banner-cta" style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://gap2growth.in/inquire-now/" target="_blank" class="btn-hero">Inquire Now →</a>
+      <a href="https://gap2growth.in/#courses" target="_blank" class="btn-hero btn-hero-ghost">View Courses</a>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <img class="footer-logo" src="https://gap2growth.in/wp-content/uploads/2025/12/cropped-Gap-2-Growth-scaled-1-300x98.png" alt="Gap2Growth"/>
+    <div class="footer-links">
+      <a href="https://gap2growth.in" target="_blank" class="footer-link">Home</a>
+      <a href="https://gap2growth.in/#courses" target="_blank" class="footer-link">Courses</a>
+      <a href="https://gap2growth.in/blogs/" target="_blank" class="footer-link">Blogs</a>
+      <a href="https://gap2growth.in/inquire-now/" target="_blank" class="footer-link">Contact</a>
+      <a href="https://www.instagram.com/gap2growth/" target="_blank" class="footer-link">Instagram</a>
+      <a href="https://wa.me/+917600174676" target="_blank" class="footer-link">WhatsApp</a>
+    </div>
+    <span class="footer-copy">© 2025 Gap2Growth · Anand, Gujarat</span>
+  </div>
+</footer>
+
+</body>
+</html>
