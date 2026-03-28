@@ -276,13 +276,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-hei
 const categories = ["All","Royal Heritage","Desert & Dunes","Mountains & Hills","Beaches & Islands","Waterways & Lakes","Nature & Fantasy","Lifestyle & Urban"];
 
 const categoryIcon = {
-  "Royal Heritage": "castle",
-  "Desert & Dunes": "landscape",
-  "Mountains & Hills": "terrain",
-  "Beaches & Islands": "beach_access",
-  "Waterways & Lakes": "waterscape",
-  "Nature & Fantasy": "park",
-  "Lifestyle & Urban": "apartment"
+  "Royal Heritage": "🏰",
+  "Desert & Dunes": "🏜️",
+  "Mountains & Hills": "🏔️",
+  "Beaches & Islands": "🏝️",
+  "Waterways & Lakes": "🌊",
+  "Nature & Fantasy": "🌿",
+  "Lifestyle & Urban": "🌆"
 };
 
 const prompts = [
@@ -390,13 +390,13 @@ function render() {
   }
   list.forEach(p => {
     const isExp = expandedId === p.id;
-    const iconName = categoryIcon[p.category] || "place";
+    const iconName = categoryIcon[p.category] || "❓";
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
       <div class="card-accent-bar"></div>
       <div class="card-header">
-        <div class="card-emoji"><span class="material-symbols-outlined">${iconName}</span></div>
+        <div class="card-emoji">${iconName}</div>
         <div class="card-meta">
           <div class="card-cat"><span class="card-cat-dot"></span>${p.category}</div>
           <div class="card-title">${p.location}</div>
@@ -424,35 +424,6 @@ function render() {
 }
 
 render();
-</script>
-<script>
-  const iconMap = {
-    camera_alt: 'CAM',
-    chatbot: 'GPT',
-    extension: 'EXT',
-    brush: 'BRU',
-    menu_book: 'BOOK',
-    edit: 'EDIT',
-    school: 'SCH',
-    smart_toy: 'AI',
-    design_services: 'DES',
-    bolt: 'BOL',
-    phone: 'CALL',
-    psychology: 'PSY',
-    palette: 'PAL',
-    work: 'WRK',
-    favorite: '♥',
-    smartphone: 'PHN',
-    apartment: 'APT'
-  };
-  document.querySelectorAll('.material-symbols-outlined').forEach((el) => {
-    const key = el.textContent.trim();
-    const fallback = iconMap[key] || key;
-    const span = document.createElement('span');
-    span.className = 'icon-badge';
-    span.textContent = fallback;
-    el.parentNode.replaceChild(span, el);
-  });
 </script>
 </body>
 </html>
